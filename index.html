@@ -62,7 +62,8 @@
   <p>IPTV Player (&ldquo;the app&rdquo;) is a media player for live TV streams. You add your own M3U/M3U8 playlists, or load a bundled list of free public channels published by their broadcasters. The app is published by <strong>Cool App Helpdesk</strong>.</p>
   <ul>
     <li>The developer <strong>collects no personal data</strong>. There are no user accounts and no developer-operated servers.</li>
-    <li>There are <strong>no ads, no analytics, no crash-reporting, social or attribution SDKs</strong>.</li>
+    <li>The app includes the <strong>Google Mobile Ads (AdMob) SDK</strong>. Ads are <strong>dormant until 1 September 2027</strong> &mdash; before that date the SDK is never initialised, loads nothing, and makes no network calls. From that date onward the app shows ads (never on the player screen), and Google receives your device&rsquo;s advertising ID. See section 5.</li>
+    <li>There are <strong>no analytics, crash-reporting, social or attribution SDKs</strong>.</li>
     <li>Your playlists, favorites and viewing history stay <strong>on your device</strong>.</li>
     <li>The app provides no TV content of its own. Streams come directly from the servers named in the playlists you add.</li>
   </ul>
@@ -70,6 +71,7 @@
 <section class="card">
   <h2>2. Data we collect</h2>
   <p><strong>None.</strong> The developer does not receive personal data, device identifiers, IP addresses, usage analytics or the list of channels you watch. Nothing you do in the app is reported to us.</p>
+  <p><strong>Advertising.</strong> Once ads activate on 1 September 2027, Google&rsquo;s AdMob SDK collects your device&rsquo;s <strong>advertising ID</strong> and coarse ad-interaction data to serve and measure ads. This goes to Google, not to the developer, and is governed by <a href="https://policies.google.com/technologies/partner-sites">Google&rsquo;s privacy policy</a>. In the EEA, UK and Switzerland the app asks for your consent first (Google&rsquo;s User Messaging Platform). You can reset or delete the advertising ID in <em>Android Settings &rarr; Privacy &rarr; Ads</em>. Before that date the SDK is inert and no advertising ID is read.</p>
 </section>
 <section class="card">
   <h2>3. Data stored on your device</h2>
@@ -96,6 +98,7 @@
       <tr><td><code>ACCESS_NETWORK_STATE</code></td><td>Only refresh playlists in the background when a network is available.</td><td>Auto-granted (normal permission)</td></tr>
       <tr><td><code>FOREGROUND_SERVICE</code>, <code>FOREGROUND_SERVICE_MEDIA_PLAYBACK</code></td><td>Keep playing when you leave the app or lock the screen.</td><td>Auto-granted on install</td></tr>
       <tr><td><code>POST_NOTIFICATIONS</code> (Android 13+)</td><td>Show the playback notification with play/pause controls.</td><td>Managed in Android Settings</td></tr>
+      <tr><td><code>com.google.android.gms.permission.AD_ID</code></td><td>Let the AdMob SDK read the device advertising ID to serve and measure ads, from 1 September 2027. Reset or delete it in <em>Android Settings &rarr; Privacy &rarr; Ads</em>.</td><td>Auto-granted (normal permission)</td></tr>
       <tr><td><code>WAKE_LOCK</code>, <code>RECEIVE_BOOT_COMPLETED</code></td><td>Added by Android&rsquo;s WorkManager library to run the periodic playlist refresh and keep it scheduled after a reboot.</td><td>Auto-granted (normal permission)</td></tr>
     </tbody>
   </table>
@@ -108,13 +111,14 @@
     <li><strong>Playlist URLs you add</strong> &mdash; fetched when you import a playlist and, if auto-refresh is on, periodically afterwards (default every 24 hours; you can change or turn this off in Settings).</li>
     <li><strong>Stream URLs</strong> &mdash; the servers listed in your playlists, or the broadcasters of the bundled free channels. The app also makes a short request to a stream to check whether it is online. These servers see your IP address like any website does; their content and privacy practices are controlled by them, not by the developer.</li>
     <li><strong>Channel logo images</strong> &mdash; loaded from the image URLs given in the playlist.</li>
+    <li><strong>Google Mobile Ads (AdMob)</strong> &mdash; From 1 September 2027 the app requests ads from Google&rsquo;s ad servers (and, in the EEA, UK and Switzerland, Google&rsquo;s consent service). Google receives the advertising ID, coarse device and network information, and ad interaction events. Before that date the SDK is never initialised and contacts nothing.</li>
   </ul>
-  <p>The app makes no other network connections. Its libraries (Media3 ExoPlayer, OkHttp, Coil, Room, WorkManager) work only within the scope above and do not send data to the developer or to third parties.</p>
+  <p>The app makes no other network connections. Apart from the AdMob SDK described above, its libraries (Media3 ExoPlayer, OkHttp, Coil, Room, WorkManager) work only within the scope above and do not send data to the developer or to third parties.</p>
   <p><strong>Content.</strong> IPTV Player is a player only. It does not host, sell or link to any channel. You are responsible for making sure you have the right to watch the streams in the playlists you add. The bundled channels are free, publicly available streams published by their broadcasters.</p>
 </section>
 <section class="card">
   <h2>6. Children&rsquo;s privacy</h2>
-  <p>IPTV Player is a general-audience app and is not directed at children under 13. It collects no personal information from any user, whatever their age, and contains no ads or in-app purchases.</p>
+  <p>IPTV Player is a general-audience app and is not directed at children under 13. The developer collects no personal information from any user, whatever their age, and the app has no in-app purchases. From 1 September 2027 it displays ads served by Google AdMob; these are not personalised for users Google identifies as children, and where the EU consent framework applies the app presents a consent prompt before any personalised ad is served.</p>
 </section>
 <section class="card">
   <h2>7. Data retention and deletion</h2>
